@@ -34,22 +34,22 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
     }
 
     const fireColors = [
-      { r: 5, g: 5, b: 5 },
-      { r: 15, g: 0, b: 0 },
-      { r: 25, g: 5, b: 0 },
-      { r: 40, g: 8, b: 0 },
-      { r: 60, g: 12, b: 0 },
-      { r: 80, g: 18, b: 0 },
-      { r: 100, g: 25, b: 0 },
-      { r: 120, g: 35, b: 5 },
-      { r: 140, g: 45, b: 5 },
-      { r: 160, g: 55, b: 10 },
-      { r: 180, g: 65, b: 10 },
-      { r: 200, g: 75, b: 15 },
-      { r: 220, g: 85, b: 15 },
-      { r: 230, g: 95, b: 20 },
-      { r: 240, g: 105, b: 25 },
-      { r: 250, g: 115, b: 30 }
+      { r: 3, g: 3, b: 3 },
+      { r: 10, g: 0, b: 0 },
+      { r: 18, g: 2, b: 0 },
+      { r: 28, g: 4, b: 0 },
+      { r: 40, g: 6, b: 0 },
+      { r: 52, g: 10, b: 0 },
+      { r: 65, g: 14, b: 0 },
+      { r: 78, g: 18, b: 0 },
+      { r: 90, g: 22, b: 2 },
+      { r: 102, g: 28, b: 3 },
+      { r: 115, g: 34, b: 4 },
+      { r: 128, g: 40, b: 5 },
+      { r: 140, g: 46, b: 6 },
+      { r: 152, g: 52, b: 8 },
+      { r: 165, g: 58, b: 10 },
+      { r: 178, g: 64, b: 12 }
     ]
 
     const spreadFire = (src: number) => {
@@ -84,18 +84,22 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
         const colorIndex = firePixels[i]
         const color = fireColors[colorIndex]
         
-        imageData.data[i * 4] = color.r
-        imageData.data[i * 4 + 1] = color.g
-        imageData.data[i * 4 + 2] = color.b
+        const darkenFactor = 0.75
+        imageData.data[i * 4] = Math.floor(color.r * darkenFactor)
+        imageData.data[i * 4 + 1] = Math.floor(color.g * darkenFactor)
+        imageData.data[i * 4 + 2] = Math.floor(color.b * darkenFactor)
         imageData.data[i * 4 + 3] = 255
       }
 
       ctx.putImageData(imageData, 0, 0)
+      ctx.filter = 'blur(2px)'
+      ctx.drawImage(canvas, 0, 0)
+      ctx.filter = 'none'
     }
 
     let animationId: number
     let lastTime = 0
-    const frameDelay = 1000 / 20
+    const frameDelay = 1000 / 12
     
     const animate = (currentTime: number) => {
       if (currentTime - lastTime >= frameDelay) {
