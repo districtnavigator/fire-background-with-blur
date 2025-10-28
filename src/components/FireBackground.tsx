@@ -84,7 +84,7 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
         const colorIndex = firePixels[i]
         const color = fireColors[colorIndex]
         
-        const darkenFactor = 0.75
+        const darkenFactor = 0.5
         imageData.data[i * 4] = Math.floor(color.r * darkenFactor)
         imageData.data[i * 4 + 1] = Math.floor(color.g * darkenFactor)
         imageData.data[i * 4 + 2] = Math.floor(color.b * darkenFactor)
