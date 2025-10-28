@@ -57,8 +57,8 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
       if (pixel === 0) {
         firePixels[src - width] = 0
       } else {
-        const randIdx = Math.round(Math.random() * 3.0) & 3
-        const dst = src - randIdx + 1
+        const randIdx = Math.round(Math.random() * 4.0) & 7
+        const dst = src - randIdx + 2
         const decay = Math.random() < 0.3 ? 1 : 0
         firePixels[dst - width] = pixel - decay >= 0 ? pixel - decay : 0
       }
