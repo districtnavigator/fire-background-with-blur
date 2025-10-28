@@ -10,7 +10,7 @@ function App() {
       <div className="relative z-10 min-h-screen w-full">
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="flex flex-col gap-8 max-w-4xl mx-auto">
-            <Card className="backdrop-blur-md bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/80 hover:shadow-2xl hover:shadow-accent/20">
+            <Card className="backdrop-blur-2xl bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/70 hover:shadow-2xl hover:shadow-accent/20">
               <div className="flex items-center gap-3 mb-6">
                 <Flame className="text-accent" size={40} weight="fill" />
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
@@ -22,7 +22,7 @@ function App() {
               </p>
             </Card>
 
-            <Card className="backdrop-blur-md bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/80 hover:shadow-2xl hover:shadow-accent/20">
+            <Card className="backdrop-blur-2xl bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/70 hover:shadow-2xl hover:shadow-accent/20">
               <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
                 Sed ut perspiciatis
               </h2>
@@ -34,7 +34,7 @@ function App() {
               </p>
             </Card>
 
-            <Card className="backdrop-blur-md bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/80 hover:shadow-2xl hover:shadow-accent/20">
+            <Card className="backdrop-blur-2xl bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/70 hover:shadow-2xl hover:shadow-accent/20">
               <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
                 At vero eos
               </h2>
@@ -46,7 +46,7 @@ function App() {
               </p>
             </Card>
 
-            <Card className="backdrop-blur-md bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/80 hover:shadow-2xl hover:shadow-accent/20">
+            <Card className="backdrop-blur-2xl bg-card border-white/10 p-8 md:p-12 transition-all hover:bg-card/70 hover:shadow-2xl hover:shadow-accent/20">
               <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
                 Temporibus autem
               </h2>
