@@ -34,22 +34,22 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
     }
 
     const fireColors = [
-      { r: 10, g: 10, b: 10 },
-      { r: 20, g: 5, b: 5 },
-      { r: 40, g: 10, b: 5 },
-      { r: 70, g: 15, b: 5 },
-      { r: 100, g: 25, b: 5 },
-      { r: 140, g: 40, b: 5 },
-      { r: 180, g: 60, b: 10 },
-      { r: 220, g: 90, b: 15 },
-      { r: 255, g: 120, b: 20 },
-      { r: 255, g: 150, b: 30 },
-      { r: 255, g: 180, b: 50 },
-      { r: 255, g: 210, b: 80 },
-      { r: 255, g: 230, b: 120 },
-      { r: 255, g: 245, b: 170 },
-      { r: 255, g: 255, b: 220 },
-      { r: 255, g: 255, b: 255 }
+      { r: 5, g: 5, b: 5 },
+      { r: 15, g: 0, b: 0 },
+      { r: 25, g: 5, b: 0 },
+      { r: 40, g: 8, b: 0 },
+      { r: 60, g: 12, b: 0 },
+      { r: 80, g: 18, b: 0 },
+      { r: 100, g: 25, b: 0 },
+      { r: 120, g: 35, b: 5 },
+      { r: 140, g: 45, b: 5 },
+      { r: 160, g: 55, b: 10 },
+      { r: 180, g: 65, b: 10 },
+      { r: 200, g: 75, b: 15 },
+      { r: 220, g: 85, b: 15 },
+      { r: 230, g: 95, b: 20 },
+      { r: 240, g: 105, b: 25 },
+      { r: 250, g: 115, b: 30 }
     ]
 
     const spreadFire = (src: number) => {
@@ -59,7 +59,7 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
       } else {
         const randIdx = Math.round(Math.random() * 3.0) & 3
         const dst = src - randIdx + 1
-        const decay = Math.floor(Math.random() * 2)
+        const decay = Math.random() < 0.3 ? 1 : 0
         firePixels[dst - width] = pixel - decay >= 0 ? pixel - decay : 0
       }
     }
@@ -94,13 +94,19 @@ export function FireBackground({ className = '' }: FireBackgroundProps) {
     }
 
     let animationId: number
-    const animate = () => {
-      updateFire()
-      renderFire()
+    let lastTime = 0
+    const frameDelay = 1000 / 20
+    
+    const animate = (currentTime: number) => {
+      if (currentTime - lastTime >= frameDelay) {
+        updateFire()
+        renderFire()
+        lastTime = currentTime
+      }
       animationId = requestAnimationFrame(animate)
     }
 
-    animate()
+    animate(0)
 
     const handleResize = () => {
       resizeCanvas()
